@@ -13,5 +13,5 @@ skipDirs      = @["test"]
 
 requires "nim >= 0.17.2"
 
-task test, "Test graph functionality"
-    exec "nim c --d:debug --lineDir:on --debuginfo --run src/test/test.nim"
+#task test, "Test graph functionality"
+#    exec "nim c --d:debug --lineDir:on --debuginfo --run src/test/test.nim"
