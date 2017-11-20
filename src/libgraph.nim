@@ -23,6 +23,42 @@ method astuple*(c: Coordinate): tuple[x: float, y: float] {.base.} =
     ## Returns coordinate as tuple
     (c.x, c.y)
 
+method `+`*(c, c1: Coordinate): Coordinate {.base.} =
+    ## Returns new coordinate containing addition
+    newCoordinate(c.x + c1.x, c.y + c1.y)
+
+method `+=`*(c, c1: Coordinate) {.base.} =
+    ## Adds coordinates and modifies first coordinate
+    c.x += c1.x
+    c.y += c1.y
+
+method `-`*(c, c1: Coordinate): Coordinate {.base.} =
+    ## Returns new coordinate containing subtraction
+    newCoordinate(c.x - c1.x, c.y - c1.y)
+
+method `-=`*(c, c1: Coordinate) {.base.} =
+    ## Subtracts coordinates and modifies first coordinate
+    c.x -= c1.x
+    c.y -= c1.y
+
+method `*`*(c, c1: Coordinate): Coordinate {.base.} =
+    ## Returns new coordinate containing multiplication
+    newCoordinate(c.x * c1.x, c.y * c1.y)
+
+method `*=`*(c, c1: Coordinate) {.base.} =
+    ## Multiples coordinates and modifies first coordinate
+    c.x *= c1.x
+    c.y *= c1.y
+
+method `/`*(c, c1: Coordinate): Coordinate {.base.} =
+    ## Returns new coordinate containing division
+    newCoordinate(c.x / c1.x, c.y / c1.y)
+
+method `/=`*(c, c1: Coordinate) {.base.} =
+    ## Divides coordinates and modifies first coordinate
+    c.x /= c1.x
+    c.y /= c1.y
+
 type
     Point* = ref object of RootObj
         ## Point. Used for pixels in graph
@@ -41,6 +77,44 @@ method astuple*(p: Point): tuple[x: int, y: int] {.base.} =
     ## Returns point as tuple
     (p.x, p.y)
 
+method `+`*(p, p1: Point): Point {.base.} =
+    ## Returns new point containing addition
+    newPoint(p.x + p1.x, p.y + p1.y)
+
+method `+=`*(p, p1: Point) {.base.} =
+    ## Adds points and modifies first point
+    p.x += p1.x
+    p.y += p1.y
+
+method `-`*(p, p1: Point): Point {.base.} =
+    ## Returns new point containing subtraction
+    newPoint(p.x - p1.x, p.y - p1.y)
+
+method `-=`*(p, p1: Point) {.base.} =
+    ## Subtracts points and modifies first point
+    p.x -= p1.x
+    p.y -= p1.y
+
+method `*`*(p, p1: Point): Point {.base.} =
+    ## Returns new point containing multiplication
+    newPoint(p.x * p1.x, p.y * p1.y)
+
+method `*=`*(p, p1: Point) {.base.} =
+    ## Multiplies points and modifies first point
+    p.x *= p1.x
+    p.y *= p1.y
+
+method `/`*(p, p1: Point): Point {.base.} =
+    ## Returns new point containing the division.
+    ## Warning! Numbers may be inaccurate due to rounding and integer conversion
+    newPoint(round(p.x / p1.x).int, round(p.y / p1.y).int)
+
+method `/=`*(p, p1: Point) {.base.} =
+    ## Divides two points and modifies first point
+    ## Warning! Numbers may be inaccurate due to rounding and integer conversion
+    p.x = round(p.x / p1.x).int
+    p.y = round(p.y / p1.y).int
+
 type
     Dimension* = ref object of RootObj
         ## Dimension. Used for parent width and height in graph
@@ -58,6 +132,44 @@ proc newDimension*(t: tuple[width: int, height: int]): Dimension =
 method astuple*(d: Dimension): tuple[width: int, height: int] {.base.} =
     ## Returns dimension as tuple
     (d.width, d.height)
+
+method `+`*(d, d1: Dimension): Dimension {.base.} =
+    ## Returns new Dimension containing addition
+    newDimension(d.width + d1.width, d.height + d1.height)
+
+method `+=`*(d, d1: Dimension) {.base.} =
+    ## Adds Dimensions and modifies first Dimension
+    d.width += d1.width
+    d.height += d1.height
+
+method `-`*(d, d1: Dimension): Dimension {.base.} =
+    ## Returns new Dimension containing subtraction
+    newDimension(d.width - d1.width, d.height - d1.height)
+
+method `-=`*(d, d1: Dimension) {.base.} =
+    ## Subtracts Dimensions and modifies first Dimension
+    d.width -= d1.width
+    d.height -= d1.height
+
+method `*`*(d, d1: Dimension): Dimension {.base.} =
+    ## Returns new Dimension containing multidlication
+    newDimension(d.width * d1.width, d.height * d1.height)
+
+method `*=`*(d, d1: Dimension) {.base.} =
+    ## Multidlies Dimensions and modifies first Dimension
+    d.width *= d1.width
+    d.height *= d1.height
+
+method `/`*(d, d1: Dimension): Dimension {.base.} =
+    ## Returns new Dimension containing the division.
+    ## Warning! Numbers may be inaccurate due to rounding and integer conversion
+    newDimension(round(d.width / d1.width).int, round(d.height / d1.height).int)
+
+method `/=`*(d, d1: Dimension) {.base.} =
+    ## Divides two Dimensions and modifies first Dimension
+    ## Warning! Numbers may be inaccurate due to rounding and integer conversion
+    d.width = round(d.width / d1.width).int
+    d.height = round(d.height / d1.height).int
 
 type
     Graph* = ref object of RootObj
