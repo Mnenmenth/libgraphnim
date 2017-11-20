@@ -1,6 +1,6 @@
 # Package
 
-version       = "1.0"
+version       = "1.1"
 author        = "Earl Kennedy"
 description   = "Converts 2D linear graph coordinates to pixels on screen"
 license       = "MIT"

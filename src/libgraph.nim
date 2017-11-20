@@ -73,19 +73,19 @@ proc newGraph*(parentDim: Dimension, xmax, xmin, ymax, ymin: int): Graph =
     Graph(parentDim: parentDim, xmax: xmax, xmin: xmin, ymax: ymax, ymin: ymin)
 
 method xunits(graph: Graph): float {.base.} =
-    # The amount of integers on the x axis
+    ## The amount of integers on the x axis
     float((if graph.xmax < 0: -graph.xmax else: graph.xmax) + (if graph.xmin < 0: -graph.xmin else: graph.xmin))
 
 method xtick(graph: Graph): float {.base.} =
-    # The amount of pixels between each integer on x axis
+    ## The amount of pixels between each integer on x axis
     float(graph.parentDim.width)/graph.xunits()
 
 method yunits(graph: Graph): float {.base.} =
-    # The amount of integers on y axis
+    ## The amount of integers on y axis
     float((if graph.ymax < 0: -graph.ymax else: graph.ymax) + (if graph.ymin < 0: -graph.ymin else: graph.ymin))
 
 method ytick(graph: Graph): float {.base.} =
-    # The amount of pixels between each integer on y axis
+    ## The amount of pixels between each integer on y axis
     float(graph.parentDim.height)/graph.yunits()
 
 method coordinateToPixelPoint*(g: Graph, c: Coordinate): Point {.base.} =
